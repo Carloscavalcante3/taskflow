@@ -1,4 +1,4 @@
-const API_URL = 'https://taskflow-api-l6yr.onrender.com';
+const API_URL = 'https://taskflow-api-l6yr.onrender.com/api';
 
 async function fetchBoard(boardId = '') {
     try {
