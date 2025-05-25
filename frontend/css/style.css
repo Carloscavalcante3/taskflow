@@ -1,0 +1,188 @@
+:root {
+    --bg-color: #f4f5f7;
+    --header-bg: #9028dbc9;
+    --list-bg: #ebecf0;
+    --card-bg: #ffffff;
+    --text-color: #172b4d;
+    --header-text: #ffffff;
+    --border-radius: 3px;
+    --spacing: 8px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    padding: var(--spacing) calc(var(--spacing) * 2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 { margin: 0; font-size: 1.5em; }
+header h2 { margin: 0; font-size: 1.2em; font-weight: 500; }
+
+.board-container {
+    display: flex;
+    flex-grow: 1;
+    padding: calc(var(--spacing) * 2);
+    gap: var(--spacing);
+    overflow-x: auto;
+    align-items: flex-start;
+}
+
+.list {
+    background-color: var(--list-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing);
+    width: 272px;
+    flex-shrink: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    max-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing);
+    font-weight: 700;
+    margin-bottom: var(--spacing);
+}
+
+.list-title { margin: 0; font-size: 1em; }
+
+.cards-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    min-height: 50px;
+    padding: 0 var(--spacing);
+    margin-bottom: var(--spacing);
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: calc(var(--spacing) * 1.5);
+    margin-bottom: var(--spacing);
+    box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+    cursor: grab;
+    position: relative;
+    border-left: 5px solid transparent;
+}
+
+.card:hover { background-color: #f9f9f9; }
+.card h4 { margin: 0 0 5px 0; font-size: 0.95em; }
+.card p { margin: 0; font-size: 0.85em; color: #5e6c84; }
+
+.delete-card-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #ccc;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.card:hover .delete-card-btn { opacity: 1; color: #e63946; }
+.delete-card-btn:hover { color: #d00000; }
+
+.add-card-btn {
+    background: none;
+    border: none;
+    padding: var(--spacing);
+    text-align: left;
+    color: #5e6c84;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    width: 100%;
+    margin-top: var(--spacing);
+}
+
+.add-card-btn:hover { background-color: #dadbe2; }
+
+.dragging { opacity: 0.5; transform: rotate(3deg); border-left-color: var(--header-bg); }
+.drag-over { background-color: #d3d3d3; border: 2px dashed #a9a9a9; }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.close-btn:hover, .close-btn:focus { color: black; text-decoration: none; cursor: pointer; }
+
+#card-title-input, #card-content-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: calc(100% - 22px);
+}
+
+#card-content-input { min-height: 80px; resize: vertical; }
+
+#save-card-btn {
+    background-color: #5aac44;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1em;
+    align-self: flex-start;
+}
+
+#save-card-btn:hover { background-color: #61bd4f; }
+
+footer {
+    text-align: center;
+    padding: var(--spacing);
+    background-color: var(--list-bg);
+    color: #5e6c84;
+    font-size: 0.8em;
+    margin-top: auto;
+}
