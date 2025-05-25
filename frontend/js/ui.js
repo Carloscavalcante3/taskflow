@@ -97,7 +97,7 @@ function addNewCardToUI(listId, card) {
     const listContainer = document.querySelector(`.cards-container[data-list-id="${listId}"]`);
     if (listContainer) {
         listContainer.appendChild(createCardElement(card));
-        addDragDropListeners(); // Re-adiciona listeners para o novo card
+        addDragDropListeners(); 
     }
 }
 
